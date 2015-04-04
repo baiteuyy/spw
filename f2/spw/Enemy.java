@@ -1,4 +1,4 @@
-package f2.spw;
+
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

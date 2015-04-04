@@ -1,4 +1,3 @@
-package f2.spw;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -19,12 +18,18 @@ public class SpaceShip extends Sprite{
 		
 	}
 
-	public void move(int direction){
-		x += (step * direction);
+	public void move(int direction_x, int direction_y){
+		x += (step * direction_x);
 		if(x < 0)
 			x = 0;
 		if(x > 400 - width)
 			x = 400 - width;
+		
+		y += (step * direction_y);
+		if(y < 0)
+			y = 0;
+		if(y > 600 - height)
+			y = 600 - height;
 	}
 
 }

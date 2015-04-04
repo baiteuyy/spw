@@ -1,4 +1,4 @@
-package f2.spw;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -62,7 +62,7 @@ public class GameEngine implements KeyListener, GameReporter{
 			if(!e.isAlive()){
 				e_iter.remove();
 				gp.sprites.remove(e);
-				score += 50;
+				score += 100;
 			}
 		}
 		
@@ -86,10 +86,16 @@ public class GameEngine implements KeyListener, GameReporter{
 	void controlVehicle(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
-			v.move(-1);
+			v.move(-1,0);
 			break;
 		case KeyEvent.VK_RIGHT:
-			v.move(1);
+			v.move(1,0);
+			break;
+		case KeyEvent.VK_UP:
+			v.move(0,-1);
+			break;
+		case KeyEvent.VK_DOWN:
+			v.move(0,1);
 			break;
 		case KeyEvent.VK_D:
 			difficulty += 0.1;

@@ -1,4 +1,3 @@
-package f2.spw;
 
 import java.awt.BorderLayout;
 
