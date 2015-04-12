@@ -2,6 +2,11 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+// add import
+import java.awt.Toolkit;
+import java.awt.Image;
+
+
 public class SpaceShip extends Sprite{
 
 	int step = 8;
@@ -13,8 +18,9 @@ public class SpaceShip extends Sprite{
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		
+		Image img = Toolkit.getDefaultToolkit().getImage("sps.jpg");
+        g.drawImage(img, x, y, width, height, null);
 		
 	}
 
