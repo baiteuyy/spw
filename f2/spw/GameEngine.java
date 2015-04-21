@@ -18,7 +18,7 @@ public class GameEngine implements KeyListener, GameReporter{
 
 	//add Enemy2	
 	private ArrayList<Enemy2> enemies2 = new ArrayList<Enemy2>();
-
+	private int life = 5;
 	private SpaceShip v;	
 	
 	private Timer timer;
@@ -85,6 +85,8 @@ public class GameEngine implements KeyListener, GameReporter{
 			er = e.getRectangle();
 			if(er.intersects(vr)){
 				die();
+				e.checkCrash();
+				gp.updateGameUI(this);
 				return;
 			}
 		}
@@ -115,6 +117,7 @@ public class GameEngine implements KeyListener, GameReporter{
 		for(Enemy2 e : enemies2){
 			er = e.getRectangle();
 			if(er.intersects(vr)){
+				//e.checkCrash();
 				die();
 				return;
 			}
@@ -122,7 +125,14 @@ public class GameEngine implements KeyListener, GameReporter{
 	}
 
 	public void die(){
-		timer.stop();
+		life--;
+		if(life < 1){
+			timer.stop();
+		}
+	}
+	
+	public int getLife(){
+		return life;
 	}
 	
 	void controlVehicle(KeyEvent e) {
