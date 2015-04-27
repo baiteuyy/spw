@@ -30,13 +30,22 @@ public class GamePanel extends JPanel {
 		
 		big.setColor(Color.YELLOW);		
 		big.drawString(String.format("%08d", reporter.getScore()), 250, 20);
-
+		big.setFont(big.getFont().deriveFont(12.0f));	
 		//EXTEND  DrawImage 
         big.drawImage(imgBg, 0, 0, 400, 600,null);
 		for(Sprite s : sprites){
 			s.draw(big);
 		}
 		
+		repaint();
+	}
+	
+	public void startUI(GameReporter reporter){
+		big.clearRect(0, 0, 400, 600);
+		//big.drawImage(img,0, 0, 400, 600, null);
+		big.setColor(Color.RED);
+		big.setFont(big.getFont().deriveFont(16.0f));	
+		big.drawString(String.format("Press \"Enter\" to start game"), 120, 300);
 		repaint();
 	}
 

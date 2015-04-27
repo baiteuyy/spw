@@ -31,6 +31,7 @@ public class GameEngine implements KeyListener, GameReporter{
 		this.v = v;		
 		
 		gp.sprites.add(v);
+		gp.startUI(this);
 		
 		timer = new Timer(50, new ActionListener() {
 			
@@ -40,6 +41,7 @@ public class GameEngine implements KeyListener, GameReporter{
 			}
 		});
 		timer.setRepeats(true);
+		gp.startUI(this);
 		
 	}
 	
@@ -151,6 +153,9 @@ public class GameEngine implements KeyListener, GameReporter{
 			break;
 		case KeyEvent.VK_D:
 			difficulty += 0.1;
+			break;
+		case KeyEvent.VK_ENTER:
+			start();
 			break;
 		}
 	}

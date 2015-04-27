@@ -10,7 +10,7 @@ public class Enemy2 extends Sprite{
 	private boolean alive = true;
 	
 	public Enemy2(int x, int y) {
-		super(x, y, 5, 10);
+		super(x, y, 28, 28);
 		
 	}
 
