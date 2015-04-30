@@ -20,6 +20,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	private ArrayList<Enemy2> enemies2 = new ArrayList<Enemy2>();
 	private int life = 5;
 	private SpaceShip v;	
+	private ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	
 	private Timer timer;
 	
@@ -38,12 +39,45 @@ public class GameEngine implements KeyListener, GameReporter{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				process();
+				processBullet();
 			}
 		});
 		timer.setRepeats(true);
 		gp.startUI(this);
 		
 	}
+	
+	private void processBullet(){
+ 		//if(Math.random() < difficulty){
+ 		//	generateBullet();
+ 		//}
+ 
+ 
+ 		Iterator<Bullet> b_iter = bullet.iterator();
+ 		while(b_iter.hasNext()){
+ 			Bullet b = b_iter.next();
+ 			b.proceed();
+ 			
+ 			if(!b.isAlive()){
+ 				b_iter.remove();
+ 				gp.sprites.remove(b);
+ 			}
+ 		}
+ 
+ 		gp.updateGameUI(this);
+ 
+ 		Rectangle2D.Double vr = v.getRectangle();
+ 		Rectangle2D.Double er;
+ 		for(Bullet b : bullet){
+ 			er = b.getRectangle();
+ 			if(er.intersects(vr)){
+ 				score  = 10;			
+ 				b.bulletCrash();
+ 				gp.updateGameUI(this);
+ 				return;
+ 			}
+ 		}
+ 	}
 	
 	public void start(){
 		timer.start();
@@ -75,7 +109,7 @@ public class GameEngine implements KeyListener, GameReporter{
 			if(!e.isAlive()){
 				e_iter.remove();
 				gp.sprites.remove(e);
-				score += 100;
+				score  = 100;
 			}
 		}
 		
@@ -157,11 +191,20 @@ public class GameEngine implements KeyListener, GameReporter{
 		case KeyEvent.VK_ENTER:
 			start();
 			break;
+		case KeyEvent.VK_SPACE:
+			fire();
+			break;
 		}
 	}
 
 	public long getScore(){
 		return score;
+	}
+	
+		private void fire(){
+		Bullet b = new Bullet((v.x) + (v.width/2), v.y);
+		gp.sprites.add(b);
+		bullet.add(b);
 	}
 	
 	@Override
