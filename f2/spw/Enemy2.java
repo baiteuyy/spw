@@ -10,8 +10,12 @@ public class Enemy2 extends Sprite{
 	private boolean alive = true;
 	
 	public Enemy2(int x, int y) {
-		super(x, y, 28, 28);
+		super(x, y, 6, 12);
 		
+	}
+	
+	void checkCrash(){
+		alive = false;
 	}
 
 	@Override

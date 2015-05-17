@@ -19,6 +19,7 @@ public class Enemy extends Sprite{
 	void checkCrash(){
 		alive = false;
 	}
+	
 
 	@Override
 	public void draw(Graphics2D g) {

@@ -16,7 +16,7 @@
  
  	@Override
  	public void draw(Graphics2D g) {
- 		g.setColor(Color.RED);
+ 		g.setColor(Color.YELLOW);
  		g.fillRect(x, y, width, height);
  	}
  

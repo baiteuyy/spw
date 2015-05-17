@@ -19,8 +19,8 @@ public class SpaceShip extends Sprite{
 	@Override
 	public void draw(Graphics2D g) {
 		
-		Image img = Toolkit.getDefaultToolkit().getImage("sps.jpg");
-        g.drawImage(img, x, y, width, height, null);
+		Image img = Toolkit.getDefaultToolkit().getImage("sps.png");
+        g.drawImage(img, x, y, 50, 70, null);
 		
 	}
 

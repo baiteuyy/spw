@@ -1,5 +1,3 @@
-
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -25,15 +23,20 @@ public class GamePanel extends JPanel {
 		big.drawImage(imgBg, 0, 0, 400, 600,null);
 	}
 
-	public void updateGameUI(GameReporter reporter){
+ public void updateGameUI(GameReporter reporter){
 		big.clearRect(0, 0, 400, 600);
+		//big.setColor(Color.YELLOW);
+		big.drawImage(imgBg, 0, 0, 400, 600,null);
 		
-		big.setColor(Color.YELLOW);		
+		big.setColor(Color.RED);
 		big.drawString(String.format("%08d", reporter.getScore()), 250, 20);
+		
+		big.setColor(Color.RED);
+		big.drawString(String.format("Life : %d", reporter.getLife()), 5, 20); 
 		big.setFont(big.getFont().deriveFont(12.0f));	
+		
 		//EXTEND  DrawImage 
-        big.drawImage(imgBg, 0, 0, 400, 600,null);
-		for(Sprite s : sprites){
+        		for(Sprite s : sprites){
 			s.draw(big);
 		}
 		
